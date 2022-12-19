@@ -11,9 +11,6 @@ import org.apache.hadoop.mapred.Reducer;
 import org.apache.hadoop.mapred.Reporter;
 
 public class ReducerIP extends MapReduceBase implements Reducer<Text, IntWritable, Text, IntWritable> {
-//	static int keyCount = 0;
-//	static Text maxIP = null;
-//	static int maxVal = 0;
 
 	// Reduce function
 	public void reduce(Text key, Iterator<IntWritable> value, OutputCollector<Text, IntWritable> output, Reporter rep)
@@ -27,19 +24,6 @@ public class ReducerIP extends MapReduceBase implements Reducer<Text, IntWritabl
 			count += i.get();
 		}
 
-//		if (count > maxVal) {
-//			maxVal = count;
-//			maxIP = key;
-//		}
-		
 		output.collect(key, new IntWritable(count));
-
-//		keyCount++;
-//
-//		if (keyCount == 333919) {
-//			output.collect(maxIP, new IntWritable(maxVal)); // correct code
-//		}
-
-//		output.collect(key, new IntWritable(keyCount)); // code to count no. of keys
 	}
 }
